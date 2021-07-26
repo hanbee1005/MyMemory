@@ -69,6 +69,11 @@
                                         <constraint firstItem="iyM-F0-cDG" firstAttribute="leading" secondItem="JCB-Qi-Idz" secondAttribute="leadingMargin" constant="10" id="t3K-dZ-JpC"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="3qQ-yj-pyK" id="hBr-5n-hw5"/>
+                                    <outlet property="regdate" destination="xEy-ZJ-vLv" id="org-Pl-Jrk"/>
+                                    <outlet property="subject" destination="iyM-F0-cDG" id="Ioe-BV-YCj"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="y88-tD-8U4" customClass="MemoCell" customModule="MyMemory" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104.5" width="414" height="80"/>
@@ -128,6 +133,12 @@
                                         <constraint firstItem="lJR-NH-ceN" firstAttribute="leading" secondItem="FpB-Yg-XsL" secondAttribute="trailing" constant="10" id="qiG-ak-nRR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="Aox-NW-yyz" id="GPB-ki-2ga"/>
+                                    <outlet property="img" destination="FpB-Yg-XsL" id="ov3-bb-Aai"/>
+                                    <outlet property="regdate" destination="krB-eB-P2V" id="kmS-j6-HUs"/>
+                                    <outlet property="subject" destination="lJR-NH-ceN" id="qWk-DH-Qj5"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
