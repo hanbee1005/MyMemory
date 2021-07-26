@@ -47,14 +47,31 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     // 카메라 버튼을 클릭했을 때 호출되는 메소드
     @IBAction func pick(_ sender: UIBarButtonItem) {
-        // 이미지 피커 인스턴스를 생성
-        let picker = UIImagePickerController()
+        let chooseMode = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        picker.delegate = self
-        picker.allowsEditing = true
+        let cameraOpen = UIAlertAction(title: "카메라", style: .default) { (_) in
+            NSLog("Camera Open")
+            
+            // TODO: 카메라 화면을 열어 사진을 찍고 찍은 사진을 추가할 수 있도록 구성
+        }
         
-        // 이미지 피커 화면을 표시
-        self.present(picker, animated: false, completion: nil)
+        let photoLibraryOpen = UIAlertAction(title: "사진 라이브러리", style: .default) { (_) in
+            NSLog("PhotoLibrary Open")
+            
+            // 이미지 피커 인스턴스를 생성
+            let picker = UIImagePickerController()
+            
+            picker.delegate = self
+            picker.allowsEditing = true
+            
+            // 이미지 피커 화면을 표시
+            self.present(picker, animated: false, completion: nil)
+        }
+        
+        chooseMode.addAction(cameraOpen)
+        chooseMode.addAction(photoLibraryOpen)
+        
+        self.present(chooseMode, animated: false, completion: nil)
     }
     
     // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
