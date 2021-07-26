@@ -11,6 +11,12 @@ class MemoListVC: UITableViewController {
     
     // 앱 델리게이트 객체의 참조 정보를 읽어온다.
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // 디바이스 스크린에 뷰 컨트롤러가 나타날 때마다 호출되는 메소드
+    override func viewWillAppear(_ animated: Bool) {
+        // 테이블 데이터를 다시 읽어들인다. 이에 따라 행을 구성하는 로직이 다시 실행될 것이다.
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
