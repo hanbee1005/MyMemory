@@ -11,7 +11,7 @@
         <!--목록-->
         <scene sceneID="Fbz-CZ-Yba">
             <objects>
-                <tableViewController id="zRH-iB-SCL" sceneMemberID="viewController">
+                <tableViewController id="zRH-iB-SCL" customClass="MemoListVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d9Z-oh-FiX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,7 +153,7 @@
         <!--메모 작성-->
         <scene sceneID="Bhw-8J-npc">
             <objects>
-                <viewController id="MUG-X2-HZc" sceneMemberID="viewController">
+                <viewController id="MUG-X2-HZc" customClass="MemoFormVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W3V-71-UaQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
         <!--Title-->
         <scene sceneID="EIA-U9-YVd">
             <objects>
-                <viewController id="9Jr-cu-hGK" sceneMemberID="viewController">
+                <viewController id="9Jr-cu-hGK" customClass="MemoReadVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Es-Qz-TIq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
