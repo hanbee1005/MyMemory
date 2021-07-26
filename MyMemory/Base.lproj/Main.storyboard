@@ -142,6 +142,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="9Jr-cu-hGK" kind="show" identifier="read_sg" id="1L1-ut-RmB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvQ-hx-7Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k25-kc-Igf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900.0000000000002" y="148.66071428571428"/>
+            <point key="canvasLocation" x="1954" y="-212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8yo-hu-m9R">
@@ -211,6 +214,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejs-XA-1Pj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="142" y="149"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="EIA-U9-YVd">
+            <objects>
+                <viewController id="9Jr-cu-hGK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Es-Qz-TIq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaS-iy-Q5x">
+                                <rect key="frame" x="0.0" y="104" width="414" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="vjK-Ek-8R1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uE-v2-DiK">
+                                <rect key="frame" x="0.0" y="145" width="414" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-cq-cbV">
+                                <rect key="frame" x="0.0" y="181" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="31a-ax-BZR"/>
+                                    <constraint firstAttribute="width" constant="250" id="3L9-r5-kRq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HnB-o7-1hU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NaS-iy-Q5x" firstAttribute="leading" secondItem="HnB-o7-1hU" secondAttribute="leading" id="23X-9v-rHY"/>
+                            <constraint firstItem="9yW-cq-cbV" firstAttribute="top" secondItem="7uE-v2-DiK" secondAttribute="bottom" constant="20" id="5jf-Fz-f5W"/>
+                            <constraint firstItem="7uE-v2-DiK" firstAttribute="leading" secondItem="HnB-o7-1hU" secondAttribute="leading" id="6K1-0k-liB"/>
+                            <constraint firstItem="7uE-v2-DiK" firstAttribute="top" secondItem="NaS-iy-Q5x" secondAttribute="bottom" constant="20" id="Q0V-vB-Eeu"/>
+                            <constraint firstItem="9yW-cq-cbV" firstAttribute="leading" secondItem="HnB-o7-1hU" secondAttribute="leading" id="Un4-jB-8fI"/>
+                            <constraint firstItem="HnB-o7-1hU" firstAttribute="trailing" secondItem="NaS-iy-Q5x" secondAttribute="trailing" id="nrA-K1-pNd"/>
+                            <constraint firstItem="NaS-iy-Q5x" firstAttribute="top" secondItem="HnB-o7-1hU" secondAttribute="top" constant="16" id="xV0-WH-PZj"/>
+                            <constraint firstItem="HnB-o7-1hU" firstAttribute="trailing" secondItem="7uE-v2-DiK" secondAttribute="trailing" id="yGB-Bx-xuu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="txx-uJ-M1J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGf-Oj-UmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953.6231884057972" y="470.75892857142856"/>
         </scene>
     </scenes>
     <resources>
