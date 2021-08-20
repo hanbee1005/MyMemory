@@ -71,4 +71,13 @@ class UserInfoManager {
             }
         }
     }
+    
+    var isLogin: Bool {
+        // 로그인 아이디가 0이거나 계정이 비어 있으면
+        if self.loginId == 0 || self.account == nil {
+            return false
+        } else {
+            return true
+        }
+    }
 }
