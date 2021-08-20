@@ -94,4 +94,14 @@ class UserInfoManager {
             return false
         }
     }
+    
+    func logout() -> Bool {
+        let ud = UserDefaults.standard
+        ud.removeObject(forKey: UserInfoKey.loginId)
+        ud.removeObject(forKey: UserInfoKey.account)
+        ud.removeObject(forKey: UserInfoKey.name)
+        ud.removeObject(forKey: UserInfoKey.profile)
+        ud.synchronize()
+        return true
+    }
 }
