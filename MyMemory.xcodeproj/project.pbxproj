@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB7B242C26CF7C8300919BDB /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */; };
+		FB7B242E26CF848100919BDB /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B242D26CF848100919BDB /* ProfileVC.swift */; };
 		FBCBB62D26AE373F008523DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB62C26AE373F008523DC /* AppDelegate.swift */; };
 		FBCBB63426AE373F008523DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCBB63226AE373F008523DC /* Main.storyboard */; };
 		FBCBB63726AE373F008523DC /* MyMemory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB63526AE373F008523DC /* MyMemory.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		FB7B242D26CF848100919BDB /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		FBCBB62926AE373F008523DC /* MyMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCBB62C26AE373F008523DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBCBB63326AE373F008523DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				FBCBB64326AE4BF0008523DC /* MemoListVC.swift */,
 				FBCBB64526AE4C14008523DC /* MemoFormVC.swift */,
 				FBCBB64726AE4C26008523DC /* MemoReadVC.swift */,
+				FB7B242D26CF848100919BDB /* ProfileVC.swift */,
 				FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */,
 				FBCBB63826AE373F008523DC /* Assets.xcassets */,
 				FBCBB63A26AE373F008523DC /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 				FBCBB64426AE4BF0008523DC /* MemoListVC.swift in Sources */,
 				FBCBB64826AE4C26008523DC /* MemoReadVC.swift in Sources */,
 				FBCBB63726AE373F008523DC /* MyMemory.xcdatamodeld in Sources */,
+				FB7B242E26CF848100919BDB /* ProfileVC.swift in Sources */,
 				FBCBB64C26AE4E6B008523DC /* MemoData.swift in Sources */,
 				FBCBB64626AE4C14008523DC /* MemoFormVC.swift in Sources */,
 				FBCBB62D26AE373F008523DC /* AppDelegate.swift in Sources */,
