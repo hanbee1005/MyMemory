@@ -29,6 +29,7 @@
 		FBD3916526D130EC0068C282 /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = FBD3915C26D130EC0068C282 /* sidemenu.png */; };
 		FBD3916626D130EC0068C282 /* account@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FBD3915D26D130EC0068C282 /* account@2x.jpg */; };
 		FBD3916726D130EC0068C282 /* icon03.png in Resources */ = {isa = PBXBuildFile; fileRef = FBD3915E26D130EC0068C282 /* icon03.png */; };
+		FBD3916926D135A60068C282 /* SideBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD3916826D135A60068C282 /* SideBarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FBD3915C26D130EC0068C282 /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
 		FBD3915D26D130EC0068C282 /* account@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "account@2x.jpg"; sourceTree = "<group>"; };
 		FBD3915E26D130EC0068C282 /* icon03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon03.png; sourceTree = "<group>"; };
+		FBD3916826D135A60068C282 /* SideBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				FBCBB64326AE4BF0008523DC /* MemoListVC.swift */,
 				FBCBB64526AE4C14008523DC /* MemoFormVC.swift */,
 				FBCBB64726AE4C26008523DC /* MemoReadVC.swift */,
+				FBD3916826D135A60068C282 /* SideBarVC.swift */,
 				FB7B242D26CF848100919BDB /* ProfileVC.swift */,
 				FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */,
 				FBCBB63826AE373F008523DC /* Assets.xcassets */,
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCBB64426AE4BF0008523DC /* MemoListVC.swift in Sources */,
+				FBD3916926D135A60068C282 /* SideBarVC.swift in Sources */,
 				FBCBB64826AE4C26008523DC /* MemoReadVC.swift in Sources */,
 				FBCBB63726AE373F008523DC /* MyMemory.xcdatamodeld in Sources */,
 				FB7B242E26CF848100919BDB /* ProfileVC.swift in Sources */,
