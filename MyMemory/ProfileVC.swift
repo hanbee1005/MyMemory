@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ProfileVC: UIViewController, UITableViewDelegate {
+class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     let uinfo = UserInfoManager()  // 개인 정보 관리 매니저
     
     @objc func doLogin(_ sender: Any) {
@@ -53,5 +54,15 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         })
         
         self.present(alert, animated: false, completion: nil)
+    }
+    
+    // MARK - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
     }
 }
