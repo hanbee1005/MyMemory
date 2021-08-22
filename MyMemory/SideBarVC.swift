@@ -8,6 +8,8 @@
 import UIKit
 
 class SideBarVC: UITableViewController {
+    let uinfo = UserInfoManager() // 개인 정보 관리 매니저
+    
     // 목록 데이터 배열
     let titles = ["새글 작성하기", "친구 새글", "달력으로 보기", "공지사향", "통계", "계정 관리"]
     
