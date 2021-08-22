@@ -126,10 +126,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "이름"
-                cell.detailTextLabel?.text = "꼼꼼한 재은씨"
+                cell.detailTextLabel?.text = self.uinfo.name ?? "Login Please"
             case 1:
                 cell.textLabel?.text = "계정"
-                cell.detailTextLabel?.text = "sqlpro@naver.com"
+                cell.detailTextLabel?.text = self.uinfo.account ?? "Login Please"
             default:
                 ()
         }
