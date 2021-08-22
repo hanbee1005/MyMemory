@@ -16,7 +16,7 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         // 페이지 뷰 컨트롤러 객체 생성
-        self.pageVC = self.instanceTutorialVC(name: "PageVC") as! UIPageViewController
+        self.pageVC = (self.instanceTutorialVC(name: "PageVC") as! UIPageViewController)
         self.pageVC.dataSource = self
         
         // 페이지 뷰 컨트롤러의 기본 페이지 지정

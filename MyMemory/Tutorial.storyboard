@@ -80,7 +80,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="3Y3-rL-T2I" id="LYg-kR-0U6"/>
+                        <outlet property="bgImageView" destination="3Y3-rL-T2I" id="rnB-Yr-roM"/>
                         <outlet property="titleLabel" destination="vyQ-se-OSY" id="rDF-l2-sTE"/>
                     </connections>
                 </viewController>
