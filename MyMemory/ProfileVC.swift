@@ -35,7 +35,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(bgImage)
         
         // 프로필 사진에 들어갈 기본 이미지
-        let image = UIImage(named: "account.jpg")
+        let image = self.uinfo.profile
         
         // 프로필 이미지 처리
         self.profileImage.image = image
