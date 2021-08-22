@@ -228,4 +228,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             self.doLogin(self.tv)
         }
     }
+    
+    // 이미지를 선택하면 이 메소드가 자동으로 실행된다.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.uinfo.profile = img
+            self.profileImage.image = img
+        }
+        
+        // 이 구문을 누락하면 이미지 피커 컨트롤러 창은 닫히지 않는다.
+        self.dismiss(animated: true, completion: nil)
+    }
 }
