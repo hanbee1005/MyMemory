@@ -62,6 +62,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         // 최초 화면 로딩 시 로그인 상태에 따라 적절히 로그인/로그아웃 버튼을 출력한다.
         self.drawBtn()
+        
+        // 프로필 이미지에 탭 제스쳐 등록
+        let tap = UITapGestureRecognizer(target: self, action: #selector(profile(_:)))
+        self.profileImage.addGestureRecognizer(tap)
+        self.profileImage.isUserInteractionEnabled = true
     }
     
     @objc func close(_ sender: Any) {
