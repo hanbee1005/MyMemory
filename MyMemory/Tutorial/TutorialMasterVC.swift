@@ -14,6 +14,26 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
     var contentTitles = ["STEP1", "STEP2", "STEP3", "STEP4"]
     var contentImages = ["Page0", "Page1", "Page2", "Page3"]
     
+    override func viewDidLoad() {
+        // 페이지 뷰 컨트롤러 객체 생성
+        self.pageVC = self.instanceTutorialVC(name: "PageVC") as! UIPageViewController
+        self.pageVC.dataSource = self
+        
+        // 페이지 뷰 컨트롤러의 기본 페이지 지정
+        let startContentVC = self.getContentVC(atIndex: 0)!  // 최초 노출될 컨텐츠 뷰 컨트롤러
+        self.pageVC.setViewControllers([startContentVC], direction: .forward, animated: true, completion: nil)
+        
+        // 페이지 뷰 컨트롤러의 출력 영역 지정
+        self.pageVC.view.frame.origin = CGPoint(x: 0, y: 0)
+        self.pageVC.view.frame.size.width = self.view.frame.width
+        self.pageVC.view.frame.size.height = self.view.frame.height - 50
+        
+        // 페이지 뷰 컨트롤러를 마스터 뷰 컨트롤러의 자식 뷰 컨트롤러로 설정
+        self.addChild(self.pageVC)
+        self.view.addSubview(self.pageVC.view)
+        self.pageVC.didMove(toParent: self)
+    }
+    
     func getContentVC(atIndex idx: Int) -> UIViewController? {
         // 인덱스가 데이터 배열 크기 범위를 벗어나면 nil 반환
         guard self.contentTitles.count >= idx && self.contentTitles.count > 0 else {
