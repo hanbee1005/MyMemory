@@ -136,4 +136,13 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    // MARK - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.uinfo.isLogin == false {
+            // 로그인 되어 있지 않다면 로그인 창을 띄워 준다.
+            self.doLogin(self.tv)
+        }
+    }
 }
