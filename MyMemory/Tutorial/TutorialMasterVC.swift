@@ -88,4 +88,12 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
         
         return self.getContentVC(atIndex: index)
     }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return self.contentTitles.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
 }
