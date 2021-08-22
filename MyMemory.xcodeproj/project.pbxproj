@@ -33,6 +33,7 @@
 		FBEDB42B26D26F030023A543 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBEDB42A26D26F030023A543 /* Tutorial.storyboard */; };
 		FBEDB42D26D276CF0023A543 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDB42C26D276CF0023A543 /* Utils.swift */; };
 		FBEDB42F26D277DB0023A543 /* TutorialContentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDB42E26D277DB0023A543 /* TutorialContentsVC.swift */; };
+		FBEDB43226D27B4A0023A543 /* TutorialMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDB43126D27B4A0023A543 /* TutorialMasterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		FBEDB42A26D26F030023A543 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		FBEDB42C26D276CF0023A543 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FBEDB42E26D277DB0023A543 /* TutorialContentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContentsVC.swift; sourceTree = "<group>"; };
+		FBEDB43126D27B4A0023A543 /* TutorialMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMasterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				FBEDB42E26D277DB0023A543 /* TutorialContentsVC.swift */,
+				FBEDB43126D27B4A0023A543 /* TutorialMasterVC.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				FBCBB64626AE4C14008523DC /* MemoFormVC.swift in Sources */,
 				FBCBB62D26AE373F008523DC /* AppDelegate.swift in Sources */,
 				FBD3915426D130110068C282 /* SWRevealViewController.m in Sources */,
+				FBEDB43226D27B4A0023A543 /* TutorialMasterVC.swift in Sources */,
 				FB7B242C26CF7C8300919BDB /* UserInfoManager.swift in Sources */,
 				FBCBB64A26AE4C77008523DC /* MemoCell.swift in Sources */,
 				FBEDB42D26D276CF0023A543 /* Utils.swift in Sources */,
