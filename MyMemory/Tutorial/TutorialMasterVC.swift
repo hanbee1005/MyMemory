@@ -52,6 +52,14 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
         return cvc
     }
     
+    @IBAction func close(_ sender: UIButton) {
+        let ud = UserDefaults.standard
+        ud.set(true, forKey: UserInfoKey.tutorial)
+        ud.synchronize()
+        
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - UIPageViewControllerDataSource
     
     // 현재 컨텐츠 뷰 컨트롤러보다 앞쪽에 올 컨텐츠 뷰 컨트롤러 객체

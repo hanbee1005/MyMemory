@@ -22,6 +22,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Llb-0c-WPY"/>
                                 </constraints>
                                 <state key="normal" title="시작하기"/>
+                                <connections>
+                                    <action selector="close:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="M7J-YN-QKK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
