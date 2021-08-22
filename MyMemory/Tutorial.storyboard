@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="1035" y="64"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial ContentsVC-->
         <scene sceneID="uKj-uI-tyx">
             <objects>
-                <viewController storyboardIdentifier="ContentsVC" id="scx-xN-OaL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentsVC" id="scx-xN-OaL" customClass="TutorialContentsVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XEm-iH-7l2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,10 @@
                             <constraint firstItem="3Y3-rL-T2I" firstAttribute="bottom" secondItem="XEm-iH-7l2" secondAttribute="bottom" id="uJl-0f-ihp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="3Y3-rL-T2I" id="LYg-kR-0U6"/>
+                        <outlet property="titleLabel" destination="vyQ-se-OSY" id="rDF-l2-sTE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFS-oF-bB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
