@@ -34,11 +34,38 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
     
     // MARK: - UIPageViewControllerDataSource
     
+    // 현재 컨텐츠 뷰 컨트롤러보다 앞쪽에 올 컨텐츠 뷰 컨트롤러 객체
+    // 즉, 현재의 상태에서 앞쪽으로 스와이프했을 때 보여줄 컨텐츠 뷰 컨트롤러 객체
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        <#code#>
+        // 현재 페이지 인덱스
+        guard var index = (viewController as! TutorialContentsVC).pageIndex else {
+            return nil
+        }
+        
+        // 현재 인덱스가 맨 앞이라면 nil을 반환하고 종료
+        guard index > 0 else {
+            return nil
+        }
+        
+        index -= 1  // 현재의 인덱스에서 하나를 뺌 (즉, 이전 페이지 인덱스)
+        return self.getContentVC(atIndex: index)
     }
     
+    // 현재 컨텐츠 뷰 컨트롤러보다 뒤쪽에 올 컨텐츠 뷰 컨트롤러 객체
+    // 즉, 현재의 상태에서 뒤쪽으로 스와이프했을 때 보여줄 컨텐츠 뷰 컨트롤러 객체
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        <#code#>
+        // 현재 페이지 인덱스
+        guard var index = (viewController as! TutorialContentsVC).pageIndex else {
+            return nil
+        }
+        
+        index += 1  // 현재의 인덱스에서 하나를 더함 (즉, 다음 페이지 인덱스)
+        
+        // 현재 인덱스가 맨 뒤라면 nil을 반환하고 종료
+        guard index < self.contentTitles.count else {
+            return nil
+        }
+        
+        return self.getContentVC(atIndex: index)
     }
 }
