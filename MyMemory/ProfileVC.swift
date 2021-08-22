@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let profileImage = UIImageView() // 프로필 사진 이미지
     let tv = UITableView()  // 프로필 목록
@@ -145,6 +145,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         v.addSubview(btn)
+    }
+    
+    func imagePicker(_ source: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = source
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker, animated: true, completion: nil)
     }
     
     // MARK - UITableViewDataSource
