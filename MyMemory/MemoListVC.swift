@@ -7,7 +7,9 @@
 
 import UIKit
 
-class MemoListVC: UITableViewController {
+class MemoListVC: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet var searchBar: UISearchBar!
     
     // 앱 델리게이트 객체의 참조 정보를 읽어온다.
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -109,6 +111,16 @@ class MemoListVC: UITableViewController {
         // 값을 전달한 다음, 상세 화면으로 이동
         vc.param = row
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keyword = searchBar.text
+        
+        // 키워드를 적용하여 데이터를 검색하고, 테이블 뷰를 갱신한다.
+        self.appDelegate.memolist = self.dao.fetch(keyword: keyword)
+        self.tableView.reloadData()
     }
     
     /*
