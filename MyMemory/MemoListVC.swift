@@ -17,6 +17,9 @@ class MemoListVC: UITableViewController, UISearchBarDelegate {
     lazy var dao = MemoDAO()
     
     override func viewDidLoad() {
+        // 검색 바의 키보드에서 리턴 키가 항상 활성화되어 있도록 처리
+        searchBar.enablesReturnKeyAutomatically = false
+        
         // SWRevealViewController 라이브러리의 revealViewController 객체를 읽어온다.
         if let revealVC = self.revealViewController() {
             // 바 버튼 아이템 객체를 정의한다.
