@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB276EEF26D7680C007B69EB /* MemoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB276EEE26D7680C007B69EB /* MemoDAO.swift */; };
 		FB7B242C26CF7C8300919BDB /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */; };
 		FB7B242E26CF848100919BDB /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B242D26CF848100919BDB /* ProfileVC.swift */; };
 		FBCBB62D26AE373F008523DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB62C26AE373F008523DC /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB276EEE26D7680C007B69EB /* MemoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDAO.swift; sourceTree = "<group>"; };
 		FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		FB7B242D26CF848100919BDB /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		FBCBB62926AE373F008523DC /* MyMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				FBCBB62C26AE373F008523DC /* AppDelegate.swift */,
 				FBCBB63226AE373F008523DC /* Main.storyboard */,
 				FBEDB42A26D26F030023A543 /* Tutorial.storyboard */,
+				FB276EEE26D7680C007B69EB /* MemoDAO.swift */,
 				FBCBB64B26AE4E6B008523DC /* MemoData.swift */,
 				FBCBB64926AE4C77008523DC /* MemoCell.swift */,
 				FBCBB64326AE4BF0008523DC /* MemoListVC.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCBB64426AE4BF0008523DC /* MemoListVC.swift in Sources */,
+				FB276EEF26D7680C007B69EB /* MemoDAO.swift in Sources */,
 				FBD3916926D135A60068C282 /* SideBarVC.swift in Sources */,
 				FBCBB64826AE4C26008523DC /* MemoReadVC.swift in Sources */,
 				FBCBB63726AE373F008523DC /* MyMemory.xcdatamodeld in Sources */,
