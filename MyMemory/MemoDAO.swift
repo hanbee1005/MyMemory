@@ -52,4 +52,42 @@ class MemoDAO {
         
         return memoList
     }
+    
+    // 새 메모 저장하기
+    func insert(_ data: MemoData) {
+        // 1. 관리 객체 인스턴스 생성
+        let object = NSEntityDescription.insertNewObject(forEntityName: "Memo", into: self.context) as! MemoMO
+        
+        // 2. MemoData로부터 값을 복사
+        object.title = data.title
+        object.contents = data.contents
+        object.regdate = data.regdate!
+        
+        if let image = data.image {
+            object.image = image.pngData()!
+        }
+        
+        // 3. 영구 저장소에 변경 사항을 반영
+        do {
+            try self.context.save()
+        } catch let e as NSError {
+            NSLog("An error has occured : %s", e.localizedDescription)
+        }
+    }
+    
+    // 메모 내용 삭제하기
+    func delete(_ objectID: NSManagedObjectID) -> Bool {
+        // 삭제할 객체를 찾아, 컨텍스트에서 삭제한다.
+        let object = self.context.object(with: objectID)
+        self.context.delete(object)
+        
+        do {
+            // 삭제된 내역을 영구 저장소에 저장한다.
+            try self.context.save()
+            return true
+        } catch let e as NSError {
+            NSLog("An error has occured : %s", e.localizedDescription)
+            return false
+        }
+    }
 }
