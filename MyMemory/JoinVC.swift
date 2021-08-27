@@ -9,6 +9,8 @@ import UIKit
 import Alamofire
 
 class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    // API 호출 상태값을 관리할 변수
+    var isCalling = false
     
     @IBOutlet var profile: UIImageView!
     @IBOutlet var tableView: UITableView!
@@ -69,6 +71,13 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
     }
     
     @IBAction func submit(_ sender: Any) {
+        if self.isCalling {
+            self.alert("진행 중입니다. 잠시만 기다려주세요.")
+            return
+        } else {
+            self.isCalling = true
+        }
+        
         // 인디케이터 뷰 애니메이션 시작
         self.indicatorView.startAnimating()
         
@@ -97,6 +106,7 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
             case .success(let result):
                 // 3-1. JSON 형식으로 값이 제대로 전달되었는지 확인
                 guard let jsonObject = result as? [String: Any] else {
+                    self.isCalling = false
                     self.alert("서버호출 과정에서 에러가 발생하였습니다.")
                     return
                 }
@@ -106,6 +116,7 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
                 if resultCode == 0 {
                     self.alert("가입이 완료되었습니다.")
                 } else { // 3-3. 응답 코드가 0이 아닐 때는 실패
+                    self.isCalling = false
                     let errorMsg = jsonObject["error_msg"] as! String
                     self.alert("오류발생 : \(errorMsg)")
                 }
