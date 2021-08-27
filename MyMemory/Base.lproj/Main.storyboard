@@ -404,6 +404,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CZk-7C-iEv">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xDU-Ly-xHz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -422,6 +427,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicatorView" destination="CZk-7C-iEv" id="spg-o3-kug"/>
                         <outlet property="profile" destination="p5w-Jy-WCm" id="27a-OL-C44"/>
                         <outlet property="tableView" destination="XpW-Wr-Dpw" id="8lt-lR-75Q"/>
                     </connections>

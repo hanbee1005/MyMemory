@@ -13,6 +13,8 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
     @IBOutlet var profile: UIImageView!
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
+    
     // 테이블 뷰에 들어갈 텍스트 필드들
     var fieldAccount: UITextField!  // 계정 필드
     var fieldPassword: UITextField!  // 비밀번호 필드
@@ -30,6 +32,9 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
         // 프로필 이미지에 탭 제스처 및 액션 이벤트 설정
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedProfile(_:)))
         self.profile.addGestureRecognizer(gesture)
+        
+        // 인디케이터 뷰를 화면의 맨 앞으로
+        self.view.bringSubviewToFront(self.indicatorView)
     }
     
     @objc func tappedProfile(_ sender: Any) {
@@ -64,6 +69,9 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
     }
     
     @IBAction func submit(_ sender: Any) {
+        // 인디케이터 뷰 애니메이션 시작
+        self.indicatorView.startAnimating()
+        
         // 1. 전달할 값 준비
         // 1-1. 이미지를 Base64 인코딩 처리
         let profile = self.profile.image?.pngData()?.base64EncodedString()
@@ -82,6 +90,9 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
         
         // 3. 서버 응답값 처리
         call.responseJSON { res in
+            // 인디케이터 뷰 애니메이션 종료
+            self.indicatorView.stopAnimating()
+            
             switch res.result {
             case .success(let result):
                 // 3-1. JSON 형식으로 값이 제대로 전달되었는지 확인
