@@ -97,16 +97,25 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let account = loginAlert.textFields?[0].text ?? ""  // 첫번째 필드 : 계정
             let passwd = loginAlert.textFields?[1].text ?? "" // 두번째 필드 : 비밀번호
             
-            if self.uinfo.login(account: account, passwd: passwd) {
+//            if self.uinfo.login(account: account, passwd: passwd) {
+//                self.tv.reloadData()  // 테이블 뷰를 갱신한다.
+//                self.profileImage.image = self.uinfo.profile  // 이미지 프로필을 갱신한다.
+//                self.drawBtn()  // 로그인 상태에 따라 적절히 로그인/로그아웃 버튼을 출력한다.
+//            } else {
+//                let msg = "로그인에 실패하였습니다."
+//                let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                self.present(alert, animated: false, completion: nil)
+//            }
+            
+            // 비동기 방식으로 변경
+            self.uinfo.login(account: account, passwd: passwd, success: {
                 self.tv.reloadData()  // 테이블 뷰를 갱신한다.
                 self.profileImage.image = self.uinfo.profile  // 이미지 프로필을 갱신한다.
-                self.drawBtn()  // 로그인 상태에 따라 적절히 로그인/로그아웃 버튼을 출력한다.
-            } else {
-                let msg = "로그인에 실패하였습니다."
-                let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: false, completion: nil)
-            }
+                self.drawBtn()
+            }, fail: { msg in
+                self.alert(msg)
+            })
         })
         
         self.present(loginAlert, animated: false, completion: nil)
