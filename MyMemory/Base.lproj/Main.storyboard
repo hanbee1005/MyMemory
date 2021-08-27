@@ -430,9 +430,11 @@
                         <outlet property="indicatorView" destination="CZk-7C-iEv" id="spg-o3-kug"/>
                         <outlet property="profile" destination="p5w-Jy-WCm" id="27a-OL-C44"/>
                         <outlet property="tableView" destination="XpW-Wr-Dpw" id="8lt-lR-75Q"/>
+                        <segue destination="6Rl-93-oae" kind="unwind" identifier="backProfileVC" unwindAction="backProfileVC:" id="2GU-em-bBl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJn-na-2kD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6Rl-93-oae" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2891" y="1274"/>
         </scene>

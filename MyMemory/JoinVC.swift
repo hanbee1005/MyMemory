@@ -114,7 +114,9 @@ class JoinVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UINa
                 // 3-2. 응답 코드 확인. 0이면 성공
                 let resultCode = jsonObject["result_code"] as! Int
                 if resultCode == 0 {
-                    self.alert("가입이 완료되었습니다.")
+                    self.alert("가입이 완료되었습니다.") {
+                        self.performSegue(withIdentifier: "backProfileVC", sender: self)
+                    }
                 } else { // 3-3. 응답 코드가 0이 아닐 때는 실패
                     self.isCalling = false
                     let errorMsg = jsonObject["error_msg"] as! String
