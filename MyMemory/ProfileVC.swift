@@ -8,6 +8,8 @@
 import UIKit
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // API 호출 상태값을 관리할 변수
+    var isCalling = false
     
     let profileImage = UIImageView() // 프로필 사진 이미지
     let tv = UITableView()  // 프로필 목록
@@ -79,6 +81,13 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     @objc func doLogin(_ sender: Any) {
+        if self.isCalling {
+            self.alert("응답을 기다리는 중입니다. \n잠시만 기다려 주세요.")
+            return
+        } else {
+            self.isCalling = true
+        }
+        
         let loginAlert = UIAlertController(title: "LOGIN", message: nil, preferredStyle: .alert)
         
         // 알림창에 들어갈 입력폼 추가
@@ -92,8 +101,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
         
         // 알림창 버튼 추가
-        loginAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        loginAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.isCalling = false
+        })
+        
         loginAlert.addAction(UIAlertAction(title: "Login", style: .destructive) { (_) in
+            // 네트워크 인디케이터 실행
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
             let account = loginAlert.textFields?[0].text ?? ""  // 첫번째 필드 : 계정
             let passwd = loginAlert.textFields?[1].text ?? "" // 두번째 필드 : 비밀번호
             
@@ -110,10 +125,18 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             
             // 비동기 방식으로 변경
             self.uinfo.login(account: account, passwd: passwd, success: {
+                // 네트워크 인디케이터 종료
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.isCalling = false
+                
                 self.tv.reloadData()  // 테이블 뷰를 갱신한다.
                 self.profileImage.image = self.uinfo.profile  // 이미지 프로필을 갱신한다.
                 self.drawBtn()
             }, fail: { msg in
+                // 네트워크 인디케이터 종료
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.isCalling = false
+                
                 self.alert(msg)
             })
         })
