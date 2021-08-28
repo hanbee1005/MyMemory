@@ -135,6 +135,15 @@ class UserInfoManager {
                         }
                     }
                     
+                    // 토큰 정보 추출
+                    let accessToken = jsonObject["access_token"] as! String  // 액세스 토큰 추출
+                    let refreshToken = jsonObject["refresh_token"] as! String  // 리프레시 토큰 추출
+                    
+                    // 토큰 정보 저장
+                    let tk = TokenUtils()
+                    tk.save("kr.co.rubypaper.MyMemory", account: "accessToken", value: accessToken)
+                    tk.save("kr.co.rubypaper.MyMemory", account: "refreshToken", value: refreshToken)
+                    
                     // 3-5. 인자값으로 입력된 success 클로저 블록을 실행한다.
                     success?()
                 } else {
@@ -147,13 +156,47 @@ class UserInfoManager {
         }
     }
     
-    func logout() -> Bool {
+//    func logout() -> Bool {
+//        let ud = UserDefaults.standard
+//        ud.removeObject(forKey: UserInfoKey.loginId)
+//        ud.removeObject(forKey: UserInfoKey.account)
+//        ud.removeObject(forKey: UserInfoKey.name)
+//        ud.removeObject(forKey: UserInfoKey.profile)
+//        ud.synchronize()
+//        return true
+//    }
+    
+    func logout(completion: (() -> Void)? = nil) {
+        // 1. 호출 URL
+        let url = "http://swiftapi.rubypaper.co.kr:2029/userAccount/logout"
+        
+        // 2. 인증 헤더 구현
+        let tokenUtils = TokenUtils()
+        let header = tokenUtils.getAuthorizationHeader()
+        
+        // 3. API 호출 및 응답 처리
+        let call = AF.request(url, method: .post, encoding: JSONEncoding.default, headers: header)
+        call.responseJSON { _ in
+            // 로컬 로그아웃
+            self.localLogout()
+            
+            // 전달 받은 완료 클로저를 실행
+            completion?()
+        }
+    }
+    
+    func localLogout() {
+        // 기본 저장소에 저장된 값을 모두 삭제
         let ud = UserDefaults.standard
         ud.removeObject(forKey: UserInfoKey.loginId)
         ud.removeObject(forKey: UserInfoKey.account)
         ud.removeObject(forKey: UserInfoKey.name)
         ud.removeObject(forKey: UserInfoKey.profile)
         ud.synchronize()
-        return true
+        
+        // 키 체인에 저장된 값을 모두 삭제
+        let tokenUtils = TokenUtils()
+        tokenUtils.delete("kr.co.rubypaper.MyMemory", account: "refreshToken")
+        tokenUtils.delete("kr.co.rubypaper.MyMemory", account: "accessToken")
     }
 }
