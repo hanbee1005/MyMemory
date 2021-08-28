@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import LocalAuthentication
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // API 호출 상태값을 관리할 변수
@@ -301,5 +303,56 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         // 이 구문을 누락하면 이미지 피커 컨트롤러 창은 닫히지 않는다.
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileVC {
+    // 토큰 인증 메소드
+    func tokenValidate() {
+        // 0. 응답 캐시를 사용하지 않도록
+        URLCache.shared.removeAllCachedResponses()
+        
+        // 1. 키 체인에 액세스 토큰이 없을 경우 유효성 검증을 진행하지 않음
+        let tk = TokenUtils()
+        guard let header = tk.getAuthorizationHeader() else {
+            return
+        }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true  // 로딩 시작
+        
+        // 2. tokenValidate API를 호출한다.
+        let url = "http://swiftapi.rubypaper.co.kr:2029/userAccount/tokenValidate"
+        let validate = AF.request(url, method: .post, encoding: JSONEncoding.default, headers: header)
+        validate.responseJSON { res in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false  // 로딩 중지
+            
+            switch res.result {
+            case .success(let res):
+                print(res)  // 2-1. 응답 결과를 확인하기 위해 메시지 본문 전체를 출력
+                guard let jsonObject = res as? NSDictionary else {
+                    self.alert("잘못된 응답입니다.")
+                    return
+                }
+                
+                // 3. 응답 결과 처리
+                let resultCode = jsonObject["result_code"] as! Int
+                if resultCode != 0 {  // 3-1. 응답 결과가 실패일 때, 즉 토큰이 만료되었을 때
+                    // 로컬 인증 실행
+                    self.touchID()
+                }
+            case .failure(let errer):
+                self.alert(errer.localizedDescription)
+            }
+        }
+    }
+    
+    // 터치 아이디 메소드
+    func touchID() {
+        
+    }
+    
+    // 토큰 갱신 메소드
+    func refresh() {
+        
     }
 }
