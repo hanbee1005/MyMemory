@@ -348,7 +348,28 @@ extension ProfileVC {
     
     // 터치 아이디 메소드
     func touchID() {
+        // 1. LAContext 인스턴스 생성
+        let context = LAContext()
         
+        // 2. 로컬 인증에 사용할 변수 정의
+        var error: NSError?
+        let msg = "인증이 필요합니다."
+        let deviceAuth = LAPolicy.deviceOwnerAuthenticationWithBiometrics
+        
+        // 3. 로컬 인증이 사용 가능한지 여부 확인
+        if context.canEvaluatePolicy(deviceAuth, error: &error) {
+            // 4. 터치 아이디 인증창 실행
+            context.evaluatePolicy(deviceAuth, localizedReason: msg) { (success, e) in
+                if success {  // 5. 인증 성공 : 토큰 갱신 로직
+                    // 5-1. 토큰 갱신 로직 실행
+                    self.refresh()
+                } else {  // 6. 인증 실패
+                    
+                }
+            }
+        } else {  // 7. 인증창이 실행되지 못한 경우
+            
+        }
     }
     
     // 토큰 갱신 메소드
