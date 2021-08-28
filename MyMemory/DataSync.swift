@@ -73,6 +73,96 @@ class DataSync {
             }
         }
     }
+    
+    // Memo 엔티티에 저장된 모든 데이터 중에서 동기화되지 않은 것을 찾아 업로드한다.
+    func uploadData() {
+        // 1. 요청 객체 생성
+        let fetchRequest: NSFetchRequest<MemoMO> = MemoMO.fetchRequest()
+        
+        // 2. 최신 글 순으로 정렬
+        let regdateDesc = NSSortDescriptor(key: "regdate", ascending: false)
+        fetchRequest.sortDescriptors = [regdateDesc]
+        
+        // 3. 업로드가 되지 않은 데이터만 추출
+        fetchRequest.predicate = NSPredicate(format: "sync == false")
+        
+        do {
+            let resultset = try self.context.fetch(fetchRequest)
+            
+            // 4. 읽어온 결과 집합을 순회하면서 [MemoData] 타입으로 변환한다.
+            for record in resultset {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                print("upload data == \(record.title!)")
+                
+                // 5. 서버에 업로드한다.
+                self.uploadDatum(record) {
+                    if record == resultset.last {  // 마지막 데이터의 업로드가 끝났다면 로딩 표시 해제
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
+                }
+            }
+        } catch let e as NSError {
+            print(e.localizedDescription)
+        }
+    }
+    
+    // 인자값으로 입력된 개별 MemoMO 객체를 서버에 업로드한다.
+    func uploadDatum(_ item: MemoMO, complete: (() -> Void)? = nil) {
+        // 1. 헤더 설정
+        let tk = TokenUtils()
+        guard let header = tk.getAuthorizationHeader() else {
+            print("로그인 상태가 아니므로 [\(item.title!)]를 업로드할 수 없습니다.")
+            return
+        }
+        
+        // 2. 전송할 값 설정
+        var param: Parameters = [
+            "title": item.title!,
+            "contents": item.contents!,
+            "create_date": self.dateToString(item.regdate!)
+        ]
+        
+        // 2-1. 이미지가 있을 경우 이미지도 전송 값에 포함
+        if let imageData = item.image as Data? {
+            param["image"] = imageData.base64EncodedString()
+        }
+        
+        // 3. 전송
+        let url = "http://swiftapi.rubypaper.co.kr:2029/memo/save"
+        let upload = AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header)
+        
+        // 4. 응답 및 결과 처리
+        upload.responseJSON { res in
+            switch res.result {
+            case .success(let res):
+                guard let jsonObject = res as? NSDictionary else {
+                    print("잘못된 응답입니다.")
+                    return
+                }
+                
+                let resultCode = jsonObject["result_code"] as! Int
+                if resultCode == 0 {
+                    print("[\(item.title!)]이(가) 등록되었습니다.")
+                    
+                    // 코어 데이터에 반영
+                    do {
+                        item.sync = true
+                        try self.context.save()
+                    } catch let e as NSError {
+                        self.context.rollback()
+                        NSLog("An error has occured : %s", e.localizedDescription)
+                    }
+                } else {
+                    print(jsonObject["error_msg"] as! String)
+                }
+                
+                // 완료 처리 클로저 실행
+                complete?()
+            case .failure(let error):
+                NSLog("An error has occured : \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 // MARK: DataSync 유틸 메소드

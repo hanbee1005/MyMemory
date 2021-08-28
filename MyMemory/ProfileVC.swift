@@ -145,6 +145,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 DispatchQueue.global(qos: .background).async {
                     sync.downloadBackupData()
                 }
+                
+                DispatchQueue.global(qos: .background).async {
+                    sync.uploadData()  // 서버에 저장해야 할 데이터가 있으면 업로드한다.
+                }
             }, fail: { msg in
                 // 네트워크 인디케이터 종료
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
