@@ -52,6 +52,20 @@ class TokenUtils {
             return nil
         }
     }
+    
+    // 키 체인에 저장된 값을 삭제하는 메소드
+    func delete(_ service: String, account: String) {
+        let keyChainQuery: NSDictionary = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrService: service,
+            kSecAttrAccount: account
+        ]
+        
+        // 현재 저장되어 있는 값 삭제
+        let status = SecItemDelete(keyChainQuery)
+        assert(status == noErr, "토큰 값 삭제에 실패했습니다.")
+        NSLog("status=\(status)")
+    }
 }
 
 extension UIViewController {
