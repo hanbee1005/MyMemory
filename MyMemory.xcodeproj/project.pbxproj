@@ -21,6 +21,7 @@
 		FBCBB64826AE4C26008523DC /* MemoReadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB64726AE4C26008523DC /* MemoReadVC.swift */; };
 		FBCBB64A26AE4C77008523DC /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB64926AE4C77008523DC /* MemoCell.swift */; };
 		FBCBB64C26AE4E6B008523DC /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBB64B26AE4E6B008523DC /* MemoData.swift */; };
+		FBD1BED926DA495B00E66043 /* DataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1BED826DA495B00E66043 /* DataSync.swift */; };
 		FBD3915426D130110068C282 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3915226D130110068C282 /* SWRevealViewController.m */; };
 		FBD3915F26D130EC0068C282 /* icon04.png in Resources */ = {isa = PBXBuildFile; fileRef = FBD3915626D130EC0068C282 /* icon04.png */; };
 		FBD3916026D130EC0068C282 /* profile-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBD3915726D130EC0068C282 /* profile-bg.png */; };
@@ -59,6 +60,7 @@
 		FBCBB64726AE4C26008523DC /* MemoReadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReadVC.swift; sourceTree = "<group>"; };
 		FBCBB64926AE4C77008523DC /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		FBCBB64B26AE4E6B008523DC /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
+		FBD1BED826DA495B00E66043 /* DataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSync.swift; sourceTree = "<group>"; };
 		FBD3915126D130110068C282 /* MyMemory-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMemory-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBD3915226D130110068C282 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FBD3915326D130110068C282 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -144,13 +146,14 @@
 				FBD3916826D135A60068C282 /* SideBarVC.swift */,
 				FB7B242D26CF848100919BDB /* ProfileVC.swift */,
 				FB67403426D8A5E00026C614 /* JoinVC.swift */,
+				FBD1BED826DA495B00E66043 /* DataSync.swift */,
 				FB7B242B26CF7C8300919BDB /* UserInfoManager.swift */,
+				FBEDB42C26D276CF0023A543 /* Utils.swift */,
 				FBCBB63826AE373F008523DC /* Assets.xcassets */,
 				FBCBB63A26AE373F008523DC /* LaunchScreen.storyboard */,
 				FBCBB63D26AE373F008523DC /* Info.plist */,
 				FBCBB63526AE373F008523DC /* MyMemory.xcdatamodeld */,
 				FBD3915126D130110068C282 /* MyMemory-Bridging-Header.h */,
-				FBEDB42C26D276CF0023A543 /* Utils.swift */,
 			);
 			path = MyMemory;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			files = (
 				FB67403526D8A5E00026C614 /* JoinVC.swift in Sources */,
 				FBCBB64426AE4BF0008523DC /* MemoListVC.swift in Sources */,
+				FBD1BED926DA495B00E66043 /* DataSync.swift in Sources */,
 				FB276EEF26D7680C007B69EB /* MemoDAO.swift in Sources */,
 				FBD3916926D135A60068C282 /* SideBarVC.swift in Sources */,
 				FBCBB64826AE4C26008523DC /* MemoReadVC.swift in Sources */,
