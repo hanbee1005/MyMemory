@@ -284,9 +284,19 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     // 이미지를 선택하면 이 메소드가 자동으로 실행된다.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // 네트워크 인디케이터 실행
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.uinfo.profile = img
-            self.profileImage.image = img
+            self.uinfo.newProfile(img, success: {
+                // 네트워크 인디케이터 종료
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.profileImage.image = img
+            }, fail: { msg in
+                // 네트워크 인디케이터 종료
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.alert(msg)
+            })
         }
         
         // 이 구문을 누락하면 이미지 피커 컨트롤러 창은 닫히지 않는다.
