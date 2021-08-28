@@ -364,11 +364,41 @@ extension ProfileVC {
                     // 5-1. 토큰 갱신 로직 실행
                     self.refresh()
                 } else {  // 6. 인증 실패
+                    print((e?.localizedDescription)!)
                     
+                    switch (e!._code) {
+                    case LAError.systemCancel.rawValue:
+                        self.alert("시스템에 의해 인증이 취소되었습니다.")
+                    case LAError.userCancel.rawValue:
+                        self.alert("사용자에 의해 인증이 취소되었습니다.") {
+                            self.commonLogout(true)
+                        }
+                    case LAError.userFallback.rawValue:
+                        OperationQueue.main.addOperation() {
+                            self.commonLogout(true)
+                        }
+                    default:
+                        OperationQueue.main.addOperation() {
+                            self.commonLogout(true)
+                        }
+                    }
                 }
             }
         } else {  // 7. 인증창이 실행되지 못한 경우
+            print(error!.localizedDescription)
             
+            switch error!.code {
+            case LAError.touchIDNotEnrolled.rawValue:
+                print("터치 아이디가 등록되어 있지 않습니다.")
+            case LAError.passcodeNotSet.rawValue:
+                print("패스 코드가 설정되어 있지 않습니다.")
+            default:
+                print("터치 아이디를 사용할 수 없습니다.")
+            }
+            
+            OperationQueue.main.addOperation {
+                self.commonLogout(true)
+            }
         }
     }
     
@@ -406,6 +436,9 @@ extension ProfileVC {
                 } else {  // 실패: 리프레시 토큰 만료
                     self.alert("인증이 만료되었으므로 다시 로그인해야 합니다.") {
                         // 4-2. 로그아웃 처리
+                        OperationQueue.main.addOperation {
+                            self.commonLogout(true)
+                        }
                     }
                 }
             case .failure(let error):
