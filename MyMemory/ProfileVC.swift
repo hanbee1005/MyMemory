@@ -413,4 +413,20 @@ extension ProfileVC {
             }
         }
     }
+    
+    func commonLogout(_ isLogin: Bool = false) {
+        // 1. 저장된 기존 개인 정보 & 키 체인 데이터를 삭제하여 로그아웃 상태로 전환
+        let userInfo = UserInfoManager()
+        userInfo.localLogout()
+        
+        // 2. 현재의 화면이 프로필 화면이라면 바로 UI를 갱신한다.
+        self.tv.reloadData()
+        self.profileImage.image = userInfo.profile
+        self.drawBtn()
+        
+        // 3. 기본 로그인 창 실행 여부
+        if isLogin {
+            self.doLogin(self)
+        }
+    }
 }
