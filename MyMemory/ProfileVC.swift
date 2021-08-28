@@ -374,6 +374,43 @@ extension ProfileVC {
     
     // 토큰 갱신 메소드
     func refresh() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true  // 로딩 시작
         
+        // 1. 인증 헤더
+        let tk = TokenUtils()
+        let header = tk.getAuthorizationHeader()
+        
+        // 2. 리프레시 토큰 전달 준비
+        let refreshToken = tk.load("kr.co.rubypaper.MyMemory", account: "refreshToken")
+        let param: Parameters = ["refresh_token" : refreshToken!]
+        
+        // 3. 호출 및 응답
+        let url = "http://swiftapi.rubypaper.co.kr:2029/userAccount/refresh"
+        let refresh = AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header)
+        refresh.responseJSON { res in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false  // 로딩 중지
+            
+            switch res.result {
+            case .success(let res):
+                guard let jsonObject = res as? NSDictionary else {
+                    self.alert("잘못된 응답입니다.")
+                    return
+                }
+                
+                // 4. 응답 결과 처리
+                let resultCode = jsonObject["result_code"] as! Int
+                if resultCode == 0 {  // 성공: 액세스 토큰이 갱신되었다는 의미
+                    // 4-1. 키 체인에 저장된 액세스 토큰 교체
+                    let accessToken = jsonObject["access_token"] as! String
+                    tk.save("kr.co.rubypaper.MyMemory", account: "accessToken", value: accessToken)
+                } else {  // 실패: 리프레시 토큰 만료
+                    self.alert("인증이 만료되었으므로 다시 로그인해야 합니다.") {
+                        // 4-2. 로그아웃 처리
+                    }
+                }
+            case .failure(let error):
+                self.alert(error.localizedDescription)
+            }
+        }
     }
 }
