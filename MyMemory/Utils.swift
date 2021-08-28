@@ -66,6 +66,16 @@ class TokenUtils {
         assert(status == noErr, "토큰 값 삭제에 실패했습니다.")
         NSLog("status=\(status)")
     }
+    
+    // 키 체인에 저장된 액세스 토큰을 이용하여 헤더를 만들어주는 메소드
+    func getAuthorizationHeader() -> HTTPHeaders? {
+        let serviceID = "kr.co.rubypaper.MyMemory"
+        if let accessToken = self.load(serviceID, account: "accessToken") {
+            return [ "Authorization" : "Bearer \(accessToken)" ] as HTTPHeaders
+        } else {
+            return nil
+        }
+    }
 }
 
 extension UIViewController {
